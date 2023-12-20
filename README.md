@@ -67,7 +67,7 @@ public class HomeController {
 
 ----
 `Home.html`
----
+--------------
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
@@ -93,7 +93,7 @@ public class HomeController {
 
 </body>
 </html>
-----
+-----------------
 `application.yml`
 
 [source,yaml]
@@ -110,12 +110,12 @@ spring:
 
 . Mettez à jour `build.gradle` pour ajouter la dépendance SAML de Spring Security :
 
-----
+
+
 repositories {
     ...
     maven { url "https://build.shibboleth.net/nexus/content/repositories/releases/" }
 }
-
 dependencies {
     constraints {
         implementation "org.opensaml:opensaml-core:4.1.1"
@@ -125,7 +125,7 @@ dependencies {
     ...
     implementation 'org.springframework.security:spring-security-saml2-service-provider'
 }
-----
+
 Exécutez l'application et authentifiez-vous
 ==
 
