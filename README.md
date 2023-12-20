@@ -38,11 +38,11 @@ Create a Spring Boot app with SAML support
 * Spring Boot: *3.0.6*
 * Dependencies: *Spring Web*, *Spring Security*, *Thymeleaf*
 
-. Add a `HomeController.java` to populate the authenticated user's information. [`saml-home`]
+. Add a `HomeController.java` pour renseigner les informations de l'utilisateur authentifié.
 +
 .`HomeController.java`
 [%collapsible]
-====
+
 [source,java]
 ----
 package com.example.demo;
@@ -63,6 +63,6 @@ public class HomeController {
         model.addAttribute("userAttributes", principal.getAttributes());
         return "home";
     }
-
 }
+
 ----
