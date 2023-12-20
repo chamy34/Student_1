@@ -37,12 +37,32 @@ Create a Spring Boot app with SAML support
 * Project: *Gradle*
 * Spring Boot: *3.0.6*
 * Dependencies: *Spring Web*, *Spring Security*, *Thymeleaf*
+
+. Add a `HomeController.java` to populate the authenticated user's information. [`saml-home`]
 +
-You can also use https://start.spring.io/#!type=gradle-project&language=java&platformVersion=3.0.6&packaging=jar&jvmVersion=17&groupId=com.example&artifactId=demo&name=demo&description=Demo%20project%20for%20Spring%20Boot&packageName=com.example.demo&dependencies=web,security,thymeleaf[this URL] or HTTPie:
-+
-[source,shell]
+.`HomeController.java`
+[%collapsible]
+====
+[source,java]
 ----
-https start.spring.io/starter.zip bootVersion==3.0.6 \
-  dependencies==web,security,thymeleaf type==gradle-project \
-  baseDir==spring-boot-saml | tar -xzvf -
+package com.example.demo;
+
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.saml2.provider.service.authentication.Saml2AuthenticatedPrincipal;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HomeController {
+
+    @RequestMapping("/")
+    public String home(@AuthenticationPrincipal Saml2AuthenticatedPrincipal principal, Model model) {
+        model.addAttribute("name", principal.getName());
+        model.addAttribute("emailAddress", principal.getFirstAttribute("email"));
+        model.addAttribute("userAttributes", principal.getAttributes());
+        return "home";
+    }
+
+}
 ----
