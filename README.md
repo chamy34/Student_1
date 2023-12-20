@@ -1,17 +1,17 @@
 # Student
 
 
-= Get Started with Spring Boot and SAML
+=Premiers pas avec Spring Boot et SAML
 
-One of my favorite Spring projects is Spring Security. In most cases, it simplifies web security to just a few lines of code. HTTP Basic, JDBC, JWT, OpenID Connect/OAuth 2.0, you name it&mdash;Spring Security does it!
+L'un de mes projets Spring préférés est Spring Security. Dans la plupart des cas, cela simplifie la sécurité Web à quelques lignes de code. HTTP Basic, JDBC, JWT, OpenID Connect/OAuth 2.0, etc. : Spring Security le fait !
 
-You might notice I didn't mention SAML as an authentication type. That's because I don't recommend it. The specification for SAML 2.0 was published in March 2005, before smartphones or smart devices even existed. OpenID Connect (OIDC) is much easier for developers to use and understand. Using SAML in 2022 is like implementing a web service using WS-* instead of REST.
-
-
-If you _must_ use SAML with Spring Boot, this screencast should make it quick and easy.
+Vous remarquerez peut-être que je n'ai pas mentionné SAML comme type d'authentification. C'est parce que je ne le recommande pas. La spécification pour SAML 2.0 a été publiée en mars 2005, avant même que les smartphones ou les appareils intelligents n'existent. OpenID Connect (OIDC) est beaucoup plus facile à utiliser et à comprendre pour les développeurs. Utiliser SAML en 2022 revient à implémenter un service Web utilisant WS-* au lieu de REST.
 
 
-**Prerequisites**:
+Si vous _devez_ utiliser SAML avec Spring Boot, ce screencast devrait le rendre rapide et facile.
+
+
+**Conditions préalables**:
 
 - https://adoptium.net/[Java 17]: I recommend using https://sdkman.io/[SDKMAN!] to manage and install multiple versions of Java.
 
@@ -19,7 +19,7 @@ If you _must_ use SAML with Spring Boot, this screencast should make it quick an
 * Use this for Recipient URL and Destination URL: ✅ (the default)
 * Audience URI: `\http://localhost:8080/saml2/service-provider-metadata/okta`
 
-. Click *Next*. Select the following options:
+. Cliquez sur *Next*. Sélectionnez les options suivantes :
 
 * I'm an Okta customer adding an internal app
 * This is an internal app that we have created
@@ -57,10 +57,11 @@ public class HomeController {
         model.addAttribute("userAttributes", principal.getAttributes());
         return "home";
     }
-
 }
-----
 
+----
+====
+----
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
@@ -106,7 +107,8 @@ repositories {
     ...
     maven { url "https://build.shibboleth.net/nexus/content/repositories/releases/" }
 }
-
+====
+----
 dependencies {
     constraints {
         implementation "org.opensaml:opensaml-core:4.1.1"
